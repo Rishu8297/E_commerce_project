@@ -1,0 +1,19 @@
+{% extends 'index.html' %}
+{% load crispy_forms_tags%}
+{% block b1 %}
+<br>
+
+<h1>Products</h1>
+
+<br>
+    <ul>
+
+        {% for product in products %}
+            <li>
+                <a href="{% url 'app1:product_detail' pk=product.pk%}">
+                {{product.name}}
+                </a>
+            </li>
+        {%endfor%}
+    </ul>
+{% endblock %}

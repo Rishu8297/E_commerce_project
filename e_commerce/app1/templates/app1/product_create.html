@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+{% load crispy_forms_tags%}
+{% block b1 %}
+<br>
+{% if form.instance.pk %}
+<h1> Edit Product</h1>
+{% else %}
+<h1>Create Product</h1>
+{%endif %}
+<br>
+<form action="" method="POST" enctype="multipart/form-data">
+    {{form|crispy}}
+    {% csrf_token %}
+    {% if form.instance.pk %}
+
+    <button type="submit" class="btn btn-success">Update</button>
+    
+{% else %}
+
+<button type="submit" class="btn btn-success">Create</button>
+{%endif %}
+<a href="{%url 'app1:products'%}" class="btn btn-danger">
+    Cancel
+</a>
+</form>
+{% endblock %}

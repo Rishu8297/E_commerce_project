@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+{% load crispy_forms_tags%}
+{% block b1 %}
+<br>
+
+<h1>Product Detail</h1>
+<br>
+    <ul>
+        
+        <h2>{{product.name}}</h2>
+        <li>Brand : {{product.brand}}</li>
+        <li>Seller : {{product.seller.user.first_name}}</li>
+        <img src={{product.cover_image.url}} alt="not found" height="25%">
+        <br><br>
+        <a href="{% url 'app1:add_address' %}" class= "btn btn-primary" type = "submit" my-4>Add Address</a>
+        <form action="" method="POST">
+            {% csrf_token%}
+            {{ order_form | crispy}}
+            <select name="quantity" id="quantity">
+
+                {% for i in n %}
+                <option value={{i}}>{{i}}</option>
+                {% endfor %}
+            </select>
+            <button class="btn btn-success" type="submit">Buy</button>
+        </form>
+    </ul>
+{% endblock %}

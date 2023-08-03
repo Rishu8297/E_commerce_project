@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+{% load crispy_forms_tags%}
+{% block b1 %}
+<br>
+
+<h1>Products</h1>
+
+<br>
+    <ul>
+
+        {% for order in orders %}
+            <li>
+                {{order.id}}
+            </li>
+        {%endfor%}
+    </ul>
+{% endblock %}

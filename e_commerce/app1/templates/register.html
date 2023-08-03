@@ -1,0 +1,12 @@
+
+{% extends 'index.html' %}
+{% load crispy_forms_tags%}
+{% block b1 %}
+        <form action="" method="POST">
+
+            {{user_form| crispy}}
+            {{customer_form| crispy}}
+            {% csrf_token %}
+            <button type="submit">Submit</button>
+        </form>
+{% endblock %}

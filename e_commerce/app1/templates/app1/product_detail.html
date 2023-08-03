@@ -1,0 +1,32 @@
+{% extends 'index.html' %}
+{% load crispy_forms_tags%}
+{% block b1 %}
+<br>
+
+<h1>Product Detail</h1>
+<br>
+    <ul>
+        {% if usertype == 'M' %}
+        <h2>{{product.name}}</h2>
+        <li>Brand : {{product.brand}}</li>
+        <li>Seller : {{product.seller.user.first_name}}</li>
+        <li>Quantity : {{product.quantity}}</li>
+        <a href="{%url 'app1:product_update' pk=product.pk%}">
+        <button class="btn btn-dark">Update</button>
+    </a>
+    <a href="{%url 'app1:product_delete' pk=product.pk%}">
+        <button class="btn btn-danger">Delete</button>
+    </a>
+        {%else %}
+        <h2>{{product.name}}</h2>
+        <li>Brand : {{product.brand}}</li>
+        <li>Seller : {{product.seller.user.first_name}}</li>
+        <img src={{product.cover_image.url}} alt="not found" height="25%">
+        <br><br>
+        
+        <a href="{% url 'app1:buy_product' pk=product.pk%}" class="btn btn-success" type="submit">Buy Now</a>
+
+        <button class="btn btn-warning">Add to Cart</button>
+        {% endif %}
+    </ul>
+{% endblock %}

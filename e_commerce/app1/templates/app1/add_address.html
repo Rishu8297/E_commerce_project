@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+{% load crispy_forms_tags%}
+{% block b1 %}
+<br>
+
+<h4>Add Address</h4>
+    <form action="" method="POST">
+
+    {{address_form|crispy}}
+    {% csrf_token %}
+    <button type="submit">Add</button>
+    </form>
+
+{% endblock %}
